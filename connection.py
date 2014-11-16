@@ -4,6 +4,7 @@ Connecting to site
 from config import *
 from time import sleep
 import requests
+from MyAdapter import MyAdapter
 
 def Connection():
 	#Connecting to server
@@ -12,6 +13,7 @@ def Connection():
 		try:
 			logging.info('Connecting to ' + URL)
 			client = requests.session()
+			client.mount('https://', MyAdapter())
 			# Retrieve the CSRF token first
 			r1 = client.get(URL)
 			break
