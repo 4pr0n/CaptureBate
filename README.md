@@ -5,7 +5,7 @@ CaptureBate lets you follow and archive your favorite models shows on chaturbate
 
 Requirements
 ==========
-(debian, minimum)
+(Debian 7, minimum)
 
 [RTMPDump(ksv)](https://github.com/BurntSushi/rtmpdump-ksv) used to capture the streams.
 
