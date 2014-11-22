@@ -75,7 +75,7 @@ def Get_links(client, Models_list_store):
                     flinks = open(Script_folder+'/'+model+'.sh', 'w')
                     flinks.write('#!/bin/sh\n')        
                     ts = time.time()
-                    st = datetime.datetime.fromtimestamp(ts).strftime('%Y.%d.%m_%H:%M')
+                    st = datetime.datetime.fromtimestamp(ts).strftime('%Y.%d.%m_%H.%M')
                     flinks.write('rtmpdump -r "rtmp://%s/live-edge" -a "live-edge" -f "WIN 11,1,102,63" -W "http://chaturbate.com/%s" -p "http://chaturbate.com/%s/" -C S:testingallthethings -C S:%s -C S:2.645 -C S:pbkdf2_sha256\$12000\$QwwcaxjaV3Ik\$cZHXVde52w+Fl6In54Ay5ZeMQMAFueQgwnnLbkTWT5g\= -T "m9z#$dO0qe34Rxe@sMYxx" --live -y "mp4:%s-sd-2c42ecd59c03850eaee04fd89924ee5c3a24b1a41b56711cf3c0176135569ad8" -q -o "%s/Chaturbate_%s_%s.flv"' %(stream_server, flash_pl_ver, model_name, model_name, model_name,Video_folder , st, model_name))
                     flinks.write('\n')
                     flinks.close()
