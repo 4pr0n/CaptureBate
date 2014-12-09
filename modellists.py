@@ -94,7 +94,17 @@ def Get_links(client, Models_list_store):
                     flinks.write('#!/bin/sh\n')
                     ts = time.time()
                     st = datetime.datetime.fromtimestamp(ts).strftime('%Y.%d.%m_%H.%M')
-                    flinks.write('%s -r "rtmp://%s/live-edge" -a "live-edge" -f "WIN 11,1,102,63" -W "http://chaturbate.com/%s" -p "http://chaturbate.com/%s/" -C S:%s -C S:%s -C S:2.645 -C S:%s -T "m9z#$dO0qe34Rxe@sMYxx" --live -y "mp4:%s-sd-2c42ecd59c03850eaee04fd89924ee5c3a24b1a41b56711cf3c0176135569ad8" -q -o "%s/Chaturbate_%s_%s.flv"' %(RTMPDUMP, stream_server, flash_pl_ver, model_name, USER.lower(), model_name, pw, model_name,Video_folder , st, model_name))
+                    form_dict = {
+                        "rtmp_bin" : RTMPDUMP,
+                        "stream_server": stream_server,
+                        "model_name": model_name,
+                        "username": USER.lower(),
+                        "flash_ver": "2.645",
+                        "pw_hash": pw,
+                        "video_folder": Video_folder,
+                        "date_string": st,
+                    }
+                    flinks.write('%(rtmp_bin)s --quiet --live --rtmp "rtmp://%(stream_server)s/live-edge" --pageUrl "http://chaturbate.com/%(model_name)s" --conn S:%(username)s --conn S:%(model_name)s --conn S:%(flash_ver)s --conn S:%(pw_hash)s --token "m9z#$dO0qe34Rxe@sMYxx" --playpath "playpath" --flv "%(video_folder)s/Chaturbate_%(date_string)s_%(model_name)s.flv"' % form_dict)
                     flinks.write('\n')
                     flinks.close()
                     os.chmod(Script_folder+'/'+model+'.sh', 0777)
@@ -111,7 +121,7 @@ def Rtmpdump_models():
 		if process == RTMPDUMP:
 			#print process + pid
 			#print fields[19][2:]
-			models.append(fields[19][2:])
+			models.append(fields[14][2:])
 	logging.debug('Rtmpdump shows the following models: \n' + str(models))
 	return models
 
