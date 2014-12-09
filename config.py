@@ -15,7 +15,7 @@ def Config_file(section, option):
 	except Exception, e:
 		logging.error('Error reading config file!')
 		logging.error(e)
-		sys.exit(1)		
+		sys.exit(1)
 	return value
 
 def Logging():
@@ -81,5 +81,6 @@ Log_file = Config_file('files','Log_file')
 wishlist_file = Config_file('files','wishlist_file')
 Time_delay = int(Config_file('delays','Time_delay'))
 Version = Config_file('version','Version')
+RTMPDUMP = Config_file('advanced','RTMPDUMP')
 # Enable storing html to debug.log file + set logging level
 Debugging = ast.literal_eval(Config_file('debug','Debugging'))
