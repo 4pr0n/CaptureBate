@@ -56,5 +56,3 @@ Once you've captured some streams you're going to need to convert the audio to h
 If you want to batch convert your captured streams run `find ./ -name '*.flv' -execdir mkdir converted_bates \;; for file in *.flv; do ffmpeg -i "$file" -vcodec copy -acodec libmp3lame "converted_bates/${file%.flv}.mp4"; done` from your `CaptureBate/Captured/` directory.
 
 If you don't want to do any conversion you can install the [speex audio codec](http://speex.org/downloads/) which is a huge pain in the ass to get working correctly under linux/vlc.
-
-......tbc
