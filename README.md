@@ -18,16 +18,16 @@ Setup
 
 Install requirements `sudo pip install -r requirements.txt`
 
-Get a [chaturbate account](https://chaturbate.com/accounts/register/), once you're signed up put your credentials in the `config.conf` file, next you need to get your hashed password for RTMPDump. To get your hash you need to be signed in, then go any models page who is currently online, right click to view page source and search for `pbkdf2_sha256$` the full hash will look something like `pbkdf2_sha256$12000$QwwcaxjaV3Ik$cZHXVde52w+Fl6In54Ay5ZeMQMAFueQgwnnLbkTWT5g\u003D` copy your hash into a text editor and escape each `$` with a `\` then replace `u003D` with `=` once you've formatted your hash it should look like `pbkdf2_sha256\$12000\$QwwcaxjaV3Ik\$cZHXVde52w+Fl6In54Ay5ZeMQMAFueQgwnnLbkTWT5g\=` you can then paste it into the rtmpdump line [modellists.py#L79](https://github.com/ohhdemgirls/CaptureBate/blob/master/modellists.py#L79) be sure to also replace the username on the same line just before your hash.
+Get a [chaturbate account](https://chaturbate.com/accounts/register/), once you're signed up put your credentials in the `config.conf` file and - if needed - adjust the other options.
 
-Now set your output directory in `config.conf` *optional, will default to `CaptureBate/Captured/` Be mindful when capturing many streams at once to have plenty of space on disk and the bandwidth available or you'll endup dropping a lot of frames and the files will be useless.
+Be mindful when capturing many streams at once to have plenty of space on disk and the bandwidth available or you'll endup dropping a lot of frames and the files will be useless.
 
 Before you can start capturing streams you first need to [follow](https://i.imgur.com/o9QyAVC.png) the models you want on site and then paste their usernames into the `wishlist.txt` file, once you have done this you're ready to start `main.py`
 
 Running & Output
 ===========
 
-To start capturing streams you need to run `python main.py` I reccomend you do this in [screen](https://www.gnu.org/software/screen/) as there is no output and it can just be left running in the background. To see what's going on run `tail -f output.log` 
+To start capturing streams you need to run `python main.py` I reccomend you do this in [screen](https://www.gnu.org/software/screen/) as there is no output and it can just be left running in the background. To see what's going on run `tail -f output.log`
 
 Standard output should look something this when recording streams ..
 
@@ -43,7 +43,7 @@ Standard output should look something this when recording streams ..
     17/11/2014 09:37:16 PM INFO:[Select_models] Which models are approved?
     17/11/2014 09:37:16 PM WARNING:[Select_models]  No models for approving
     17/11/2014 09:37:16 PM INFO:[Loop]Model list after check looks like: 0 models:
-     [] 
+     []
      and models currently being recorded are:
      ['adryeenmely', 'hottminx']
     17/11/2014 09:37:16 PM INFO:[Sleep] Waiting for next check (45 seconds)
