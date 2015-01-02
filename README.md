@@ -20,6 +20,8 @@ Install requirements `sudo pip install -r requirements.txt`
 
 Get a [chaturbate account](https://chaturbate.com/accounts/register/), once you're signed up put your credentials in the `config.conf` file and - if needed - adjust the other options.
 
+NOTE: if you find captures aren't starting set an absolute directory for captures in `config.conf` like so `Video_folder = /home/user/CaptureBate/Captured`
+
 Be mindful when capturing many streams at once to have plenty of space on disk and the bandwidth available or you'll endup dropping a lot of frames and the files will be useless.
 
 Before you can start capturing streams you first need to [follow](https://i.imgur.com/o9QyAVC.png) the models you want on site and then paste their usernames into the `wishlist.txt` file, once you have done this you're ready to start `main.py`
