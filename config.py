@@ -15,7 +15,7 @@ def Config_file(section, option):
 	except Exception, e:
 		logging.error('Error reading config file!')
 		logging.error(e)
-		sys.exit(1)		
+		sys.exit(1)
 	return value
 
 def Logging():
@@ -27,14 +27,14 @@ def Logging():
 	logging.info('Starting application: version %s' %Version)
 
 def Remove_folder(folder):
-    if (os.path.exists(folder) == True):
-        try:
-            shutil.rmtree(folder)
-            logging.debug("Removing folder: " + folder)
-        except IOError as e:
-            logging.error(e)
+	if (os.path.exists(folder) == True):
+		try:
+			shutil.rmtree(folder)
+			logging.debug("Removing folder: " + folder)
+		except IOError as e:
+			logging.error(e)
 
-def Preconditions(folder):
+def Create_folder(folder):
 	if (os.path.exists(folder) == False):
 		try:
 			os.mkdir(folder)
@@ -44,15 +44,15 @@ def Preconditions(folder):
 
 def Wishlist():
 	# Wishlist has a list of models that should be recorded
-    try:
-        with open(wishlist_file, 'r') as f:
-                data = [line.strip() for line in f]
-        f.close()
-    except IOError, e:
-        logging.info("Error: %s file does not appear to exist." % wishlist_file)
-        logging.debug(e)
-        sys.exit(1)
-    return data
+	try:
+		with open(wishlist_file, 'r') as f:
+				data = [line.strip() for line in f]
+		f.close()
+	except IOError, e:
+		logging.info("Error: %s file does not appear to exist." % wishlist_file)
+		logging.debug(e)
+		sys.exit(1)
+	return data
 
 def Store_Debug(lines, filename):
 	# Store html to debug.log file
@@ -81,5 +81,6 @@ Log_file = Config_file('files','Log_file')
 wishlist_file = Config_file('files','wishlist_file')
 Time_delay = int(Config_file('delays','Time_delay'))
 Version = Config_file('version','Version')
+RTMPDUMP = Config_file('advanced','RTMPDUMP')
 # Enable storing html to debug.log file + set logging level
 Debugging = ast.literal_eval(Config_file('debug','Debugging'))
